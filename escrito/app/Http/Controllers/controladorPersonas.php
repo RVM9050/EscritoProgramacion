@@ -82,4 +82,38 @@ class controladorPersonas extends Controller
     ];
     return response()->json($data, 200);
     }
+    public function modificacion(Request $request, $id){
+    $persona = Persona::find($id);
+        if(!$persona){
+            $data = [
+                'mensaje' => 'No se encontro a la persona',
+                'status' => 404
+            ];
+            return response()->json($data, 404);
 }
+$validator = Validator::make($request->all(),[
+    'nombre'=>'required',
+    'apellido'=>'required',
+    'telefono'=>'required'
+]);
+if ($validator->fails()){
+    $data = [
+        'mensaje' =>   'Error validando datos',
+        'error' =>   $validator->errors(),
+        'status' =>   '400'
+    ];
+    return response()->json($data, 400); 
+} 
+$persona->nombre=$request->nombre;
+$persona->apellido=$request->apellido;
+$persona->telefono=$request->telefono;
+$persona->guardar();
+$data =[
+    'mensaje'=> 'Persona modificada con exito',
+    'persona'=>$persona,
+    'status'=>200   
+];
+return response()->json($data, 200);
+}
+}
+

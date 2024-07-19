@@ -13,8 +13,8 @@ Route::post('/personas', function(){
     return 'creando personas';
 });
 
-Route::put('/personas/{id}', function(){
-    return 'actualizando persona';
-});
+Route::put('/personas/{id}', [controladorPersonas::class, 'modificacion']);
+   
+
 
 Route::delete('/personas/{id}',[controladorPersonas::class, 'baja']);
