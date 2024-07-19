@@ -9,9 +9,9 @@ Route::get('/personas', [controladorPersonas::class, 'listar']);
 
 Route::get('/personas/{id}',  [controladorPersonas::class, 'buscar']);
 
-Route::post('/personas', function(){
-    return 'creando personas';
-});
+Route::post('/personas', [controladorPersonas::class, 'guardar']);
+
+
 
 Route::put('/personas/{id}', function(){
     return 'actualizando persona';
