@@ -75,5 +75,11 @@ class controladorPersonas extends Controller
         ];
         return response()->json($data, 404);
     }
+    $persona->delete();
+    $data =[
+        'mensaje'=> 'Persona dada de baja con exito',
+        'status'=>200   
+    ];
+    return response()->json($data, 200);
     }
 }

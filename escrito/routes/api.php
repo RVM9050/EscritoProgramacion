@@ -17,6 +17,4 @@ Route::put('/personas/{id}', function(){
     return 'actualizando persona';
 });
 
-Route::delete('/personas/{id}', function(){
-    return 'eliminando persona';
-});
+Route::delete('/personas/{id}',[controladorPersonas::class, 'baja']);
