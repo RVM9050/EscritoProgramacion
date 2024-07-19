@@ -66,4 +66,14 @@ class controladorPersonas extends Controller
         ];
         return response()->json($data, 201);
     }
+    public function baja($id){
+    $persona = Persona::find($id);
+    if(!$persona){
+        $data = [
+            'mensaje' => 'No se encontro a la persona',
+            'status' => 404
+        ];
+        return response()->json($data, 404);
+    }
+    }
 }
